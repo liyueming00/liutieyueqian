@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<%= require('html-loader!./layout/html-head.html')%>
+	<head>
+		<%= require('html-loader!./layout/head-common.html')%>
+		<title><%= htmlWebpackPlugin.options.title %> - TMailStore电商平台</title>
+	</head>
 <body>
-	<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js"></script>
+	
+	<%= require('html-loader!./layout/footer.html')%>
+	<%= require('html-loader!./layout/nav.html')%>
 </body>
+
 </html>
 

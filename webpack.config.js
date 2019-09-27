@@ -10,12 +10,13 @@ var str = new Buffer('aHR0cDovL3Rlc3QuaGFwcHltbWFsbC5jb20v', 'base64');
 //接口字符串
 var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
-var getHtmlConfig = function(name){
+var getHtmlConfig = function(name,title){
 	return {
 		//对哪个html进行打包
 			template:'./src/view/'+ name +'.html',
 			//打包以后的路径和文件
 			filename:'view/'+ name +'.html',
+			title:title,
 			//自动注入
 			inject:true,
 			//哈希值
@@ -27,9 +28,10 @@ var getHtmlConfig = function(name){
 
 var config = {
 	entry: {
+		'common':['./src/page/common/index.js'],
 		'index':'./src/page/index/index.js',
 		'user-login':'./src/page/user-login/index.js',
-		'common':['./src/page/common/index.js']
+		'user-result':'./src/page/user-result/index.js'
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -68,6 +70,10 @@ var config = {
 				test : /\.(gif|png|jpg|woff|svg|eot|ttf).??.*$/,
 				loader:'url-loader?limit=100&name=resource/[name].[ext]'
 					
+			},
+			{
+				test:/\.string$/,
+				loader:"html-loader"
 			}
 		]
 		
@@ -76,8 +82,9 @@ var config = {
 	},
 	plugins:[
 		new ExtractTextPlugin("css/[name].css"),
-		new HtmlWebpackPlugin(getHtmlConfig('index')),
-		new HtmlWebpackPlugin(getHtmlConfig('user-login'))
+		new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
+		new HtmlWebpackPlugin(getHtmlConfig('user-login','用户登录')),
+		new HtmlWebpackPlugin(getHtmlConfig('user-result','操作结果'))
 		],
 		resolve:{
 			alias:{
@@ -89,7 +96,7 @@ var config = {
 			}
 		},
 		devServer:{
-			port:8088,
+			port:8089,
 			inline:true,
 			//配置代理实验跨域
 			//当访问localhost:8088/**/*.do
@@ -104,7 +111,7 @@ var config = {
 }
 
 if('dev'===WEBPACK_ENV){
-	config.entry.common.push('webpack-dev-server/client?http://localhost:8088')
+	config.entry.common.push('webpack-dev-server/client?http://localhost:8089')
 }
 
 

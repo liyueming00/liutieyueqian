@@ -29,7 +29,7 @@ var nav = {
 	},
 	//加载用户信息的方法
 	loadUserInfo:function(){
-		_user.ckeckLogin(function(res){
+		_user.checkLogin(function(res){
 			$('user.not-login').hide().siblings('.user.login').show()
 			.find('.username').text(res.username)
 		},function(errMsg){

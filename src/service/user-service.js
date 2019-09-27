@@ -14,7 +14,7 @@ var _user ={
 	},
 	//核对用户信息
 	checkLogin: function(resolve,reject){
-		_mm.require({
+		_mm.request({
 			url: _mm.getServerUrl('/user/get_user_info.do'),
 			method: 'POST',
 			success: resolve,

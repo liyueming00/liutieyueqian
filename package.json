@@ -4,7 +4,7 @@
   "description": "柳铁粤嵌H5",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8088",
+    "dev": "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8089",
     "dist": "set WEBPACK_ENV=online && webpack -p"
   },
   "repository": {
@@ -23,7 +23,7 @@
     "file-loader": "^4.2.0",
     "hogan.js": "^3.0.2",
     "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.0.0-beta.8",
     "style-loader": "^1.0.0",
     "url-loader": "^2.1.0",
     "webpack": "^4.0.0",

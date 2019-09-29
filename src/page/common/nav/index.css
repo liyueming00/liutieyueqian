@@ -1,19 +1,18 @@
 .nav{
-	background: #eee;
+	background:#eee;
 	height: 30px;
 	line-height: 30px;
-
 }
 .nav .user{
 	float: left;
 }
 .nav .user.login{
-	display: none;
+	display:none;
 }
 .nav .user .link{
 	margin-right: 5px;
 }
-/*导航链接部分*/
+/* 导航链接部分*/
 .nav .nav-list{
 	float: right;
 }
